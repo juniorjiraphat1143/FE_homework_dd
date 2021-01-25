@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {box-sizing: border-box}
+    body {font-family: Verdana, sans-serif; margin:0}
+    /* Slideshow container */
+
+    
+    /* Next & previous buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 26%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: black;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      background-color: white;
+      opacity: 0.5;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+      margin-right: 2%;
+    }
+    .prev{
+      left: 0;
+      margin-left: 2%;
+      border-radius: 3px 0 0 3px;
+    }
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    
+    .active, .dot:hover {
+      background-color: #717171;
+    }
+    .Slide img{
+      width: 600px;
+    }
+  
+    .Slide_contain{
+      display: flex;
+      justify-content: center;
+      margin-top: 5%;
+      padding: 2%;
+    }
+    .Slide_contain .Slide{
+     padding: 1%;
+    }
+
+    </style>
+    
+    <body>
+
+    <div class="Slide_contain">
+
+    <div class="Slide">
+      <img src="https://store-images.s-microsoft.com/image/apps.33984.13967883465347024.a738391a-4e6d-4849-b6e2-082e1afc606a.8660fb3b-2f8f-43e3-be38-81f79322dce4?mode=scale&q=90&h=1080&w=1920" >
+    </div>
+
+    <div class="Slide">
+      <img src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg">
+    </div>
+
+    <div class="Slide">
+      <img src="https://i.vimeocdn.com/video/995553262_640x357.jpg">
+    </div>
+   
+ 
+    <div class="Slide">
+      <img src="https://i.pinimg.com/736x/e1/dc/5e/e1dc5e3bdeaf19a80eced07cf2d8b7b3.jpg">
+    </div>
+
+    <div class="Slide">
+      <img src="https://cdn.pixabay.com/photo/2017/02/10/00/10/minecraft-2053886_960_720.png">
+    </div>
+
+    <a class="prev" onclick="move(-1)">&#10094;</a>
+    <a class="next" onclick="move(1)">&#10095;</a>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+      <span class="dot" onclick="currentSlide(4)"></span> 
+      <span class="dot" onclick="currentSlide(5)"></span> 
+   
+    </div>
+    <script>
+     
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function move(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  console.log("now you click" + n  );
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("Slide");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display="none"
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle("active", "");
+  }
+  slides[slideIndex-1].style.display = "flex";  
+  dots[slideIndex-1].classList.add("active");
+}
+
+
+
+    </script>
+</html>
